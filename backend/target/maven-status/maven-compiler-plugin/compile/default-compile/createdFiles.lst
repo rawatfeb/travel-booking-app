@@ -1,0 +1,3 @@
+com\travel\TravelApplication.class
+com\travel\controller\CabRouteController.class
+com\travel\entity\CabRoute.class
