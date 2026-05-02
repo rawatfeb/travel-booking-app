@@ -1,9 +1,9 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-WORKDIR /app/backend
+WORKDIR /app
 
-COPY backend/pom.xml .
-COPY backend/src ./src
+# IMPORTANT: backend is already root in Render
+COPY . .
 
 RUN mvn clean package -DskipTests
 
@@ -11,7 +11,7 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-COPY --from=build /app/backend/target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
